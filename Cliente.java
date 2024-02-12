@@ -1,21 +1,16 @@
-import prueba.Cliente;
+import java.util.Random;
 
 public class Cliente {
 	private int id;
 	private int pasword;
-	//private double saldoCuenta;
+	double monedero;
 
-	/**
-	 * @param id
-	 * @param pasword
-	 */
 	public Cliente(int id, int pasword) {
 		this.id = id;
 		this.pasword = pasword;
+		this.monedero = randomMetod();
 	}
 
-	Cliente() {
-	}
 
 	public int getPasword() {
 		return pasword;
@@ -32,21 +27,31 @@ public class Cliente {
 	public void setId(int id) {
 		this.id = id;
 	}
-	boolean checkUser(Cliente cliente) {
-
-		if (this.id == cliente.id && this.pasword == cliente.pasword) {
-			System.out.println("ID Y PASWORD CORRECTO");
-			return true;
-
-		} else {
-			System.out.println("Error: el usuario no existe");
-			return false;
-		}
-
+	
+	public double getSaldo() {
+		// TODO Auto-generated method stub
+		return monedero;
 	}
-
-//	void depositMoney(double cantidad) {
-//		saldoCuenta = saldoCuenta + cantidad;
-//
-//	}
+	
+	public void setSaldo(double monedero) {
+		this.monedero = monedero;
+	}
+	
+	public double dropSaldo(double monedero) {
+		return this.monedero = this.monedero-monedero;
+	}
+	
+	
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Cliente cliente = (Cliente) obj;
+        return id == cliente.id && pasword == cliente.pasword;
+    }
+	
+	public double randomMetod() {
+		Random random = new Random();
+		return random.nextDouble(19000)+1000;
+	}
 }
